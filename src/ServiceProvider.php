@@ -2,7 +2,6 @@
 
 namespace Kedeka\Support;
 
-use Kedeka\Support\Commands\SupportCommand;
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
 
