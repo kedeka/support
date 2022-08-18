@@ -55,7 +55,7 @@
     "extra": {
         "laravel": {
             "providers": [
-                "Kedeka\\Support\\SupportServiceProvider"
+                "Kedeka\\Support\\ServiceProvider"
             ],
             "aliases": {
                 "Support": "Kedeka\\Support\\Facades\\Support"

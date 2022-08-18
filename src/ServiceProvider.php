@@ -4,9 +4,8 @@ namespace Kedeka\Support;
 
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
-use Kedeka\Support\Commands\SupportCommand;
 
-class SupportServiceProvider extends PackageServiceProvider
+class ServiceProvider extends PackageServiceProvider
 {
     public function configurePackage(Package $package): void
     {
@@ -16,10 +15,6 @@ class SupportServiceProvider extends PackageServiceProvider
          * More info: https://github.com/spatie/laravel-package-tools
          */
         $package
-            ->name('support')
-            ->hasConfigFile()
-            ->hasViews()
-            ->hasMigration('create_support_table')
-            ->hasCommand(SupportCommand::class);
+            ->name('support');
     }
 }
