@@ -2,7 +2,6 @@
 
 namespace App\Models\Concerns;
 
-use Illuminate\Support\Facades\Schema;
 use Ulid\Ulid;
 
 trait UlidAsPrimary
@@ -10,7 +9,7 @@ trait UlidAsPrimary
     public static function bootUlidAsPrimary()
     {
         static::creating(function ($model) {
-            if (!$model->id) {
+            if (! $model->id) {
                 $model->id = (string) Ulid::generate();
             }
         });
