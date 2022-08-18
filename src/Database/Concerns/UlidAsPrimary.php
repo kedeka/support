@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Models\Concerns;
+namespace Kedeka\Support\Database\Concerns;
 
 use Ulid\Ulid;
 
