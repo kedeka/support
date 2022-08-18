@@ -8,6 +8,8 @@ use Illuminate\Support\Facades\Blade;
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
 
+use Illuminate\Support\HtmlString;
+
 class ServiceProvider extends PackageServiceProvider
 {
     public function configurePackage(Package $package): void
