@@ -2,12 +2,11 @@
 
 namespace Kedeka\Support;
 
-use Illuminate\Support\Facades\Blade;
+use Exception;
 use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Blade;
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
-
-use Exception;
 
 class ServiceProvider extends PackageServiceProvider
 {
@@ -42,10 +41,9 @@ class ServiceProvider extends PackageServiceProvider
     public function bootBlade()
     {
         Blade::directive('viteCssOnly', function ($expression) {
-
             if (is_file(public_path('/hot'))) {
                 return app(\Illuminate\Foundation\Vite::class)('resources/css/app.css');
-            };
+            }
 
             $manifestPath = public_path('build/manifest.json');
             $manifests = json_decode(file_get_contents($manifestPath), true);
@@ -53,14 +51,14 @@ class ServiceProvider extends PackageServiceProvider
             $css = $manifests['resources/js/app.js']['css'][0] ?? null;
 
             if ($css) {
-
-                if (file_exists(public_path('build/' . $css))) {
+                if (file_exists(public_path('build/'.$css))) {
                     $cssUrl = asset("build/{$css}");
+
                     return new HtmlString("<link rel=\"stylesheet\" href=\"{$cssUrl}\">");
                 }
             }
 
-            throw new Exception("CSS File Not found");
+            throw new Exception('CSS File Not found');
         });
     }
 }

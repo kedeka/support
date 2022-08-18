@@ -3,7 +3,6 @@
 namespace App\Models\Concerns;
 
 use Illuminate\Support\Facades\Schema;
-use Illuminate\Support\Facades\Log;
 use Ulid\Ulid;
 
 trait HasUlid
@@ -12,7 +11,7 @@ trait HasUlid
     {
         static::creating(function ($model) {
             if (Schema::hasColumn($model->getTable(), 'ulid')) {
-                if (!$model->ulid) {
+                if (! $model->ulid) {
                     $model->ulid = (string) Ulid::generate();
                 }
             }
