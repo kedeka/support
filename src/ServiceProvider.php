@@ -5,10 +5,9 @@ namespace Kedeka\Support;
 use Exception;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Blade;
+use Illuminate\Support\HtmlString;
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
-
-use Illuminate\Support\HtmlString;
 
 class ServiceProvider extends PackageServiceProvider
 {

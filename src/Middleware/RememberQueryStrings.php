@@ -2,8 +2,8 @@
 
 namespace Kedeka\Support\Middleware;
 
-use Illuminate\Support\Facades\Redirect;
 use Closure;
+use Illuminate\Support\Facades\Redirect;
 
 class RememberQueryStrings
 {
@@ -30,12 +30,12 @@ class RememberQueryStrings
 
     protected function remembered($next, $request)
     {
-        $remembered = array_filter($request->session()->get('remember_query_strings.' . $request->route()->getName()) ?? []);
+        $remembered = array_filter($request->session()->get('remember_query_strings.'.$request->route()->getName()) ?? []);
 
         if ($remembered) {
             $request->session()->reflash();
 
-            return Redirect::to(url($request->path()) . '?' . http_build_query($remembered));
+            return Redirect::to(url($request->path()).'?'.http_build_query($remembered));
         }
 
         return $next($request);
@@ -43,14 +43,14 @@ class RememberQueryStrings
 
     protected function remember($next, $request)
     {
-        $request->session()->put('remember_query_strings.' . $request->route()->getName(), array_filter($request->all()));
+        $request->session()->put('remember_query_strings.'.$request->route()->getName(), array_filter($request->all()));
 
         return $next($request);
     }
 
     protected function forget($next, $request)
     {
-        $request->session()->remove('remember_query_strings.' . $request->route()->getName());
+        $request->session()->remove('remember_query_strings.'.$request->route()->getName());
 
         return Redirect::to(url($request->path()));
     }
