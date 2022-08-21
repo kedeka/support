@@ -7,8 +7,12 @@ use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\HtmlString;
 use Spatie\LaravelPackageTools\Package;
+use Illuminate\Http\RedirectResponse;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
 
+/**
+ * Kedeka\Support\ServiceProvider.
+ */
 class ServiceProvider extends PackageServiceProvider
 {
     public function configurePackage(Package $package): void
@@ -28,7 +32,22 @@ class ServiceProvider extends PackageServiceProvider
         $this->bootBlade();
     }
 
-    public function bootBlueprint()
+    protected function bootMacro()
+    {
+        RedirectResponse::macro('banner', fn ($message) => $this->with('flash', [
+            'bannerStyle' => 'success',
+            'timestamp' => now()->timestamp,
+            'banner' => $message,
+        ]));
+
+        RedirectResponse::macro('dangerBanner', fn ($message) => $this->with('flash', [
+            'bannerStyle' => 'danger',
+            'timestamp' => now()->timestamp,
+            'banner' => $message,
+        ]));
+    }
+
+    protected function bootBlueprint()
     {
         Blueprint::macro('ulid', function ($name = 'ulid') {
             $this->string($name, 26)->unique();
@@ -39,7 +58,7 @@ class ServiceProvider extends PackageServiceProvider
         });
     }
 
-    public function bootBlade()
+    protected function bootBlade()
     {
         Blade::directive('viteCssOnly', function ($expression) {
             if (is_file(public_path('/hot'))) {
