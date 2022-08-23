@@ -3,16 +3,14 @@
 namespace Kedeka\Support;
 
 use Exception;
-
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Http\RedirectResponse;
+use Illuminate\Pagination\LengthAwarePaginator;
+use Illuminate\Pagination\UrlWindow;
+use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\Facades\Request;
-use Illuminate\Support\Collection;
 use Illuminate\Support\HtmlString;
-use Illuminate\Pagination\UrlWindow;
-use Illuminate\Pagination\LengthAwarePaginator;
-
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
 
@@ -115,6 +113,7 @@ class ServiceProvider extends PackageServiceProvider
                 public function merge($attributes = [])
                 {
                     $this->merge = $attributes;
+
                     return $this;
                 }
 
@@ -127,14 +126,14 @@ class ServiceProvider extends PackageServiceProvider
                         'prev' => [
                             'url' => $this->previousPageUrl(),
                             'label' => 'Previous',
-                            'active' => false
+                            'active' => false,
                         ],
                         'next' => [
                             'url' => $this->nextPageUrl(),
                             'label' => 'Next',
                             'active' => false,
                         ],
-                        ...$this->merge ?? []
+                        ...$this->merge ?? [],
                     ];
                 }
 
