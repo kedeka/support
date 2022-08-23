@@ -3,7 +3,7 @@
 namespace Kedeka\Support\Tests;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
-use Kedeka\Support\ServiceProvider;
+use Kedeka\Support\SupportServiceProvider;
 use Orchestra\Testbench\TestCase as Orchestra;
 
 class TestCase extends Orchestra
@@ -20,7 +20,7 @@ class TestCase extends Orchestra
     protected function getPackageProviders($app)
     {
         return [
-            ServiceProvider::class,
+            SupportServiceProvider::class,
         ];
     }
 

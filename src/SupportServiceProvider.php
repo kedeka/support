@@ -15,9 +15,9 @@ use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
 
 /**
- * Kedeka\Support\ServiceProvider.
+ * Kedeka\Support\SupportServiceProvider.
  */
-class ServiceProvider extends PackageServiceProvider
+class SupportServiceProvider extends PackageServiceProvider
 {
     public function configurePackage(Package $package): void
     {
