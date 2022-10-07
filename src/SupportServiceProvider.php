@@ -58,7 +58,7 @@ class SupportServiceProvider extends PackageServiceProvider
 
     protected function bootBlueprint()
     {
-        Blueprint::macro('ulid', function ($name = 'ulid') {
+        Blueprint::macro('ulidAlias', function ($name = 'ulid') {
             $this->string($name, 26)->unique();
         });
 
