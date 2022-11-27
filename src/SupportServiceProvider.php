@@ -43,26 +43,34 @@ class SupportServiceProvider extends PackageServiceProvider
 
     protected function bootMacro()
     {
-        RedirectResponse::macro('banner', fn ($message) => $this->with('flash', [
-            'bannerStyle' => 'success',
-            'timestamp' => now()->timestamp,
-            'banner' => $message,
-        ]));
+        RedirectResponse::macro('banner', function($message) {
+            /** @var RedirectResponse $this */
+            $this->with('flash', [
+                'bannerStyle' => 'success',
+                'timestamp' => now()->timestamp,
+                'banner' => $message,
+            ]);
+        });
 
-        RedirectResponse::macro('dangerBanner', fn ($message) => $this->with('flash', [
-            'bannerStyle' => 'danger',
-            'timestamp' => now()->timestamp,
-            'banner' => $message,
-        ]));
+        RedirectResponse::macro('dangerBanner', function($message) {
+            /** @var RedirectResponse $this */
+            $this->with('flash', [
+                'bannerStyle' => 'danger',
+                'timestamp' => now()->timestamp,
+                'banner' => $message,
+            ]);
+        });
     }
 
     protected function bootBlueprint()
     {
         Blueprint::macro('ulidAlias', function ($name = 'ulid') {
+            /** @var Blueprint $this */
             $this->string($name, 26)->unique();
         });
 
         Blueprint::macro('ulidPrimary', function ($name = 'id') {
+            /** @var Blueprint $this */
             $this->string($name, 26)->primary();
         });
     }
