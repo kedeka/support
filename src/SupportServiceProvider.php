@@ -43,7 +43,7 @@ class SupportServiceProvider extends PackageServiceProvider
 
     protected function bootMacro()
     {
-        RedirectResponse::macro('banner', function($message) {
+        RedirectResponse::macro('banner', function ($message) {
             /** @var RedirectResponse $this */
             $this->with('flash', [
                 'bannerStyle' => 'success',
@@ -52,7 +52,7 @@ class SupportServiceProvider extends PackageServiceProvider
             ]);
         });
 
-        RedirectResponse::macro('dangerBanner', function($message) {
+        RedirectResponse::macro('dangerBanner', function ($message) {
             /** @var RedirectResponse $this */
             $this->with('flash', [
                 'bannerStyle' => 'danger',
