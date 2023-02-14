@@ -9,18 +9,20 @@ trait HasSlug
 {
     public static function bootHasSlug()
     {
-        static::creating(function ($model) {
+        $callback = function ($model) {
             if (Schema::hasColumn($model->getTable(), 'slug')) {
                 if (! $model->slug) {
                     $slugable = $model->{$model->getSlugableColumn()} ?: $model->name;
                     $model->slug = (string) Str::slug($slugable);
                 }
             }
-        });
+        };
+
+        static::saving($callback);
     }
 
     public function getSlugableColumn()
     {
-        return 'title';
+        return $this->slugColumn ?? 'title';
     }
 }
