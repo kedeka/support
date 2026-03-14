@@ -1,11 +1,31 @@
 parameters:
 	ignoreErrors:
 		-
-			message: "#^Access to an undefined property class@anonymous/SupportServiceProvider\\.php\\:114\\:\\:\\$merge\\.$#"
+			message: '#^Trait Kedeka\\Support\\Database\\Concerns\\HasSlug is used zero times and is not analysed\.$#'
+			identifier: trait.unused
+			count: 1
+			path: src/Database/Concerns/HasSlug.php
+
+		-
+			message: '#^Trait Kedeka\\Support\\Database\\Concerns\\HasUlid is used zero times and is not analysed\.$#'
+			identifier: trait.unused
+			count: 1
+			path: src/Database/Concerns/HasUlid.php
+
+		-
+			message: '#^Trait Kedeka\\Support\\Database\\Concerns\\UlidAsPrimary is used zero times and is not analysed\.$#'
+			identifier: trait.unused
+			count: 1
+			path: src/Database/Concerns/UlidAsPrimary.php
+
+		-
+			message: '#^Access to an undefined property Illuminate\\Pagination\\LengthAwarePaginator@anonymous/SupportServiceProvider\.php\:115\:\:\$merge\.$#'
+			identifier: property.notFound
 			count: 2
 			path: src/SupportServiceProvider.php
 
 		-
-			message: "#^Method class@anonymous/SupportServiceProvider\\.php\\:114\\:\\:links\\(\\) should return Illuminate\\\\Contracts\\\\Support\\\\Htmlable but returns Illuminate\\\\Support\\\\Collection\\<\\(int\\|string\\), array\\<string, mixed\\>\\>\\.$#"
+			message: '#^Method Illuminate\\Pagination\\LengthAwarePaginator@anonymous/SupportServiceProvider\.php\:115\:\:links\(\) should return Illuminate\\Contracts\\Support\\Htmlable but returns Illuminate\\Support\\Collection\<\(int\|string\), array\<string, mixed\>\>\.$#'
+			identifier: return.type
 			count: 1
 			path: src/SupportServiceProvider.php
