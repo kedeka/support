@@ -2,6 +2,4 @@
 
 namespace Kedeka\Support;
 
-class Support
-{
-}
+class Support {}

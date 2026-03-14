@@ -4,6 +4,7 @@ namespace Kedeka\Support;
 
 use Exception;
 use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Foundation\Vite;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Pagination\LengthAwarePaginator;
 use Illuminate\Pagination\UrlWindow;
@@ -79,10 +80,19 @@ class SupportServiceProvider extends PackageServiceProvider
     {
         Blade::directive('viteCssOnly', function ($expression) {
             if (is_file(public_path('/hot'))) {
-                return app(\Illuminate\Foundation\Vite::class)('resources/css/app.css');
+                return app(Vite::class)('resources/css/app.css');
             }
 
             $manifestPath = public_path('build/manifest.json');
+
+            if (! file_exists($manifestPath)) {
+                $manifestPath = public_path('build/.vite/manifest.json');
+            }
+
+            if (! file_exists($manifestPath)) {
+                throw new Exception('Vite manifest not found');
+            }
+
             $manifests = json_decode(file_get_contents($manifestPath), true);
 
             $css = $manifests['resources/js/app.js']['css'][0] ?? null;

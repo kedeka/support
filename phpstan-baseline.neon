@@ -1,0 +1,11 @@
+parameters:
+	ignoreErrors:
+		-
+			message: "#^Access to an undefined property class@anonymous/SupportServiceProvider\\.php\\:114\\:\\:\\$merge\\.$#"
+			count: 2
+			path: src/SupportServiceProvider.php
+
+		-
+			message: "#^Method class@anonymous/SupportServiceProvider\\.php\\:114\\:\\:links\\(\\) should return Illuminate\\\\Contracts\\\\Support\\\\Htmlable but returns Illuminate\\\\Support\\\\Collection\\<\\(int\\|string\\), array\\<string, mixed\\>\\>\\.$#"
+			count: 1
+			path: src/SupportServiceProvider.php
