@@ -2,7 +2,7 @@
 
 namespace Kedeka\Support\Database\Concerns;
 
-use Ulid\Ulid;
+use Illuminate\Support\Str;
 
 trait UlidAsPrimary
 {
@@ -10,7 +10,7 @@ trait UlidAsPrimary
     {
         static::creating(function ($model) {
             if (! $model->id) {
-                $model->id = (string) Ulid::generate();
+                $model->id = (string) Str::ulid();
             }
         });
     }

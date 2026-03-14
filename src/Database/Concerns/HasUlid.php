@@ -3,7 +3,7 @@
 namespace Kedeka\Support\Database\Concerns;
 
 use Illuminate\Support\Facades\Schema;
-use Ulid\Ulid;
+use Illuminate\Support\Str;
 
 trait HasUlid
 {
@@ -12,7 +12,7 @@ trait HasUlid
         static::creating(function ($model) {
             if (Schema::hasColumn($model->getTable(), 'ulid')) {
                 if (! $model->ulid) {
-                    $model->ulid = (string) Ulid::generate();
+                    $model->ulid = (string) Str::ulid();
                 }
             }
         });

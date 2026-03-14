@@ -83,6 +83,15 @@ class SupportServiceProvider extends PackageServiceProvider
             }
 
             $manifestPath = public_path('build/manifest.json');
+
+            if (! file_exists($manifestPath)) {
+                $manifestPath = public_path('build/.vite/manifest.json');
+            }
+
+            if (! file_exists($manifestPath)) {
+                throw new Exception('Vite manifest not found');
+            }
+
             $manifests = json_decode(file_get_contents($manifestPath), true);
 
             $css = $manifests['resources/js/app.js']['css'][0] ?? null;
