@@ -3,7 +3,6 @@
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Routing\Route;
-use Illuminate\Support\Facades\Session;
 use Kedeka\Support\Middleware\RememberQueryStrings;
 
 describe('RememberQueryStrings', function () {

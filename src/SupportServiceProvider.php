@@ -4,6 +4,7 @@ namespace Kedeka\Support;
 
 use Exception;
 use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Foundation\Vite;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Pagination\LengthAwarePaginator;
 use Illuminate\Pagination\UrlWindow;
@@ -79,7 +80,7 @@ class SupportServiceProvider extends PackageServiceProvider
     {
         Blade::directive('viteCssOnly', function ($expression) {
             if (is_file(public_path('/hot'))) {
-                return app(\Illuminate\Foundation\Vite::class)('resources/css/app.css');
+                return app(Vite::class)('resources/css/app.css');
             }
 
             $manifestPath = public_path('build/manifest.json');
